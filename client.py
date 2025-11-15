@@ -10,6 +10,6 @@ threading.Thread(target = send_sms ).start()
 while 1:
   try:
     
-    print(client_socket.recv(1024).decode())
+    print("\nВідповідь від серверу", client_socket.recv(1024).decode())
   except:
     pass

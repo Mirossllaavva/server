@@ -6,16 +6,34 @@ connect_client = []
 server_socket.listen(5) #сервер очікує клієнта 
 server_socket.setblocking(0)
 print("Сервер очікує клієнта") 
+def send_sms(message):
+    for connect in connect_client:
+        try:
+            connect.send(message.encode())
+        except:
+            pass
+
+
 def accept_sms():
     while 1:
         try:
-            for client in connect_client:
-                message = client.recv(1024).decode()
-                print(message)
+            for connect in connect_client:
+                message = connect.recv(1024).decode()
+                if message:
+                    print(f"Запрос кліента: {message}")
+                    send_sms(message)
+                # server_sms = input("Введіть відповідь: ")
+                # connect.send(server_sms.encode())
+
+
         except: 
             pass
 threading.Thread(target=accept_sms).start()
-
+# def send_sms():
+#     while 1:
+#         server_sms = input("Введіть відповідь: ")
+#         server_socket.send(server_sms.encode())
+# threading.Thread(target = send_sms).start()
 while 1:
     try:
         
