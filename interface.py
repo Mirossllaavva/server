@@ -19,7 +19,7 @@ widget_entry = CTkEntry(window, fg_color = "white", width = 300, corner_radius =
 widget_entry.place(x = 100, y = 520)
 image = Image.open("кнопка отправки.png")
 CTk_image = CTkImage(light_image = image, size = (20, 10))
-def send():
+def send(): #створюємо функцію для прикріплення тексту до текстбоксу
     sms = widget_entry.get()
     widget_entry.delete(0, END)
     # text_box.configure(state = "normal")
@@ -45,6 +45,7 @@ btn.place(x = 420, y = 520)
 
 label = CTkLabel(window, text = " Онлайн листування", font= CTkFont(family = "Bodoni MT Black", size = 28),text_color = "#310062" )
 label.pack()
+
 
 
 
